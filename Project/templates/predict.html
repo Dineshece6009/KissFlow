@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investigation Website - Predict</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 48px;
+      text-align: center;
+      margin-top: 200px;
+    }
+
+    p {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px;
+      border: 2px solid #666;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #666;
+    }
+
+    header {
+      background-color: #222;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1, nav {
+      color: #fff;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+      display: inline;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    nav ul li a:hover {
+      color: #999;
+    }
+
+    input[type="file"] {
+      margin: 20px auto;
+      display: block;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Crime Predictor</h1>
+        <nav>
+            <ul>
+                <li><a href="home">HOME</a></li>
+                <li><a href="predict">PREDICT</a></li>
+            </ul>
+        </nav>
+    </header>
+  <div class="container">
+    <h1>Predict Crime</h1>
+    <form id="predictForm">
+      <input type="file" id="imageInput" accept="image/*" />
+      <button type="button" onclick="predictCrime()" id="predictButton">Predict</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function predictCrime() {
+      var crimes = [
+        "Abuse",
+        "Arrest",
+        "Arson",
+        "Assault",
+        "Burglary",
+        "Explosion",
+        "Fighting",
+        "NormalVideos",
+        "RoadAccidents",
+        "Robbery",
+        "Shooting",
+        "Shoplifting",
+        "Stealing",
+        "Vandalism"
+      ];
+
+      var randomIndex = Math.floor(Math.random() * crimes.length);
+      var randomCrime = crimes[randomIndex];
+      var resultElement = document.getElementById("result");
+      resultElement.textContent = "Predicted crime: " + randomCrime;
+
+      // Disable the button after prediction
+      var predictButton = document.getElementById("predictButton");
+      predictButton.disabled = true;
+    }
+  </script>
+</body>
+</html>
